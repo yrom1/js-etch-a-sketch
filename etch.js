@@ -15,8 +15,8 @@ container.setAttribute('style', `display: grid; grid-template-columns: repeat(${
 makeDivs(9);
 
 document.getElementById("1").innerHTML = "Hello World";
+const test = document.getElementById("1");
 
-/*
 test.addEventListener("mouseover", function( event ) {
   // highlight the mouseover target
   event.target.style.color = "orange";
@@ -26,4 +26,3 @@ test.addEventListener("mouseover", function( event ) {
     event.target.style.color = "";
   }, 500);
 }, false);
-*/
