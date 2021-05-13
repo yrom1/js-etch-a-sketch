@@ -6,20 +6,19 @@ function makeDivs(num) {
         div.textContent = (i+1).toString();
         let divID = String(i+1)
         div.setAttribute('id', divID);                              
-        container.appendChild(div);     
+        container.appendChild(div);
+
+        const currentDiv = document.getElementById(String(i+1));
+        currentDiv.addEventListener("mouseover", function( event ) {
+          event.target.style.color = "orange";
+          setTimeout(function() {
+            event.target.style.color = "";
+          }, 500);
+        }, false);
+
     }
 }
 
 let numberDivs = 9;
 container.setAttribute('style', `display: grid; grid-template-columns: repeat(${numberDivs}, 1fr)`);
 makeDivs(9);
-
-document.getElementById("1").innerHTML = "Hello World";
-const test = document.getElementById("1");
-
-test.addEventListener("mouseover", function( event ) {
-  event.target.style.color = "orange";
-  setTimeout(function() {
-    event.target.style.color = "";
-  }, 500);
-}, false);
