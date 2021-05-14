@@ -35,8 +35,11 @@ function makeGrid(divInput = 15) {
   let gridSizePx = 500;
   let gridSizeGap = 5;
   let widthSquare = gridSizePx/numberDivs;
+  let newWidthSquare = (gridSizePx - (gridSizeGap * (numberDivs-1)))/numberDivs;
   let newGridSizePx = gridSizePx + (gridSizeGap * (numberDivs-1));
-  
+  widthSquare = newWidthSquare;
+  newGridSizePx = gridSizePx;
+
   container.setAttribute('style', `display: grid; grid-template-columns: repeat(${numberDivs}, ${widthSquare}px); grid-template-rows: repeat(${numberDivs}, ${widthSquare}px); grid-gap: 0; height: ${newGridSizePx}px; width: ${newGridSizePx}px;  grid-gap: ${gridSizeGap}px ${gridSizeGap}px; border-style: solid; border-color: darkgray; margin-top: 50px;`);
   makeDivs(numberDivs);
 }
