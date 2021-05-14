@@ -24,18 +24,21 @@ function logSubmit(event) {
   for (var i = 0; i < etchDivs.length; i++) {
     etchDivs[i].style.backgroundColor = 'red';
   }
-  makeGrid(val);
-  event.preventDefault();
-}
-
-function makeGrid(divs = 15) {
+  container.innerHTML = '';
+  
+  let numberDivs = val;
   let gridSizePx = 500;
   let gridSizeGap = 5;
   let widthSquare = gridSizePx/numberDivs;
   let newGridSizePx = gridSizePx + (gridSizeGap * (numberDivs-1));
-  
+
   container.setAttribute('style', `display: grid; grid-template-columns: repeat(${numberDivs}, ${widthSquare}px); grid-template-rows: repeat(${numberDivs}, ${widthSquare}px); grid-gap: 0; height: ${newGridSizePx}px; width: ${newGridSizePx}px;  grid-gap: ${gridSizeGap}px ${gridSizeGap}px; border-style: solid; border-color: darkgray; margin-top: 50px;`);
-  makeDivs(divs)
+  makeDivs(numberDivs);
+  event.preventDefault();
+}
+
+function makeGrid() {
+  
 }
 
 const container = document.querySelector('#container');
@@ -48,6 +51,5 @@ let widthSquare = gridSizePx/numberDivs;
 let newGridSizePx = gridSizePx + (gridSizeGap * (numberDivs-1));
 
 container.setAttribute('style', `display: grid; grid-template-columns: repeat(${numberDivs}, ${widthSquare}px); grid-template-rows: repeat(${numberDivs}, ${widthSquare}px); grid-gap: 0; height: ${newGridSizePx}px; width: ${newGridSizePx}px;  grid-gap: ${gridSizeGap}px ${gridSizeGap}px; border-style: solid; border-color: darkgray; margin-top: 50px;`);
-
 makeDivs(numberDivs);
 form.addEventListener('submit', logSubmit);
