@@ -9,9 +9,9 @@ function makeDivs(num) {
 
         const currentDiv = document.getElementById(String(i+1));
         currentDiv.addEventListener("mouseover", function( event ) {
-          event.target.style.backgroundColor = "gray";
+          event.target.style.backgroundColor = initialColor;
           setTimeout(function() {
-            event.target.style.backgroundColor = "darkgray";
+            event.target.style.backgroundColor = fadedColor;
           }, 500);
         }, false);
 
@@ -25,12 +25,16 @@ function logSubmit(event) {
     etchDivs[i].style.backgroundColor = 'red';
   }
   container.innerHTML = '';
-  
-  makeGrid(val);
+  if (val == '') {
+    makeGrid(defaultDiv)
+  }
+  else {
+    makeGrid(val);
+  }
   event.preventDefault();
 }
 
-function makeGrid(divInput = 15) {
+function makeGrid(divInput = defaultDiv) {
   let numberDivs = divInput;
   let gridSizePx = 500;
   let gridSizeGap = 5;
@@ -43,8 +47,21 @@ function makeGrid(divInput = 15) {
   container.setAttribute('style', `display: grid; grid-template-columns: repeat(${numberDivs}, ${widthSquare}px); grid-template-rows: repeat(${numberDivs}, ${widthSquare}px); grid-gap: 0; height: ${newGridSizePx}px; width: ${newGridSizePx}px;  grid-gap: ${gridSizeGap}px ${gridSizeGap}px; border-style: solid; border-color: darkgray; margin-top: 50px;`);
   makeDivs(numberDivs);
 }
-
+const checkbox = document.querySelector("input[name=fun-check]");
+const defaultDiv = 15;
 const container = document.querySelector('#container');
 const form = document.getElementById('form');
+
+var initialColor = "gray";
+var fadedColor = "darkgray";
+
 makeGrid();
 form.addEventListener('submit', logSubmit);
+
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    console.log("Checkbox is checked..");
+  } else {
+    console.log("Checkbox is not checked..");
+  }
+});
