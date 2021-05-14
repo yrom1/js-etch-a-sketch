@@ -15,7 +15,12 @@ function makeDivs(num) {
             event.target.style.backgroundColor = initialColor;
           }
           setTimeout(function() {
-            event.target.style.backgroundColor = fadedColor;
+            if (checkbox.checked == true) {
+              event.target.style.backgroundColor = getRandomColor();// fadedColor;
+            }
+            else {
+              event.target.style.backgroundColor = fadedColor;
+            }
           }, 500);
         }, false);
 
@@ -63,6 +68,12 @@ function getRandomColor() {
   return color;
 }
 
+function init() {
+  document.getElementById("reset-input").value = "";
+}
+
+window.onload = init;
+
 const checkbox = document.querySelector("input[name=fun-check]");
 const defaultDiv = 15;
 const container = document.querySelector('#container');
@@ -73,15 +84,3 @@ var fadedColor = "darkgray";
 
 makeGrid();
 form.addEventListener('submit', logSubmit);
-
-/*
-checkbox.addEventListener('change', function() {
-  if (this.checked) {
-    console.log("Checkbox is checked..");
-    var fun = true;
-  } else {
-    console.log("Checkbox is not checked..");
-    var fun = false;
-  }
-});
-*/
